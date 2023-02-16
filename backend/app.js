@@ -36,15 +36,12 @@ require("./auth/passportConfig")(passport)
 app.get('/', (req, res) => {
     res.send('hello')
 })
-app.get('/getUsers', db.getUsers)
 
 app.post('/login', (req,res)=>{
     passport.authenticate('local', {failureMessage: "Wow you suck!", failureRedirect:'/'})
     res.send('Authorize')
 })
-app.get('/getAllUsers',(req,res)=>{
-    
-})
+app.get('/getAllUsers',db.getUsers)
 
 app.listen(port, () => {
     console.log(`server is up on port ${port}`)
